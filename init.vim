@@ -187,11 +187,11 @@ noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 "noremap <LEADER>st :Startify<CR>
 
 " Undo operations
-noremap l u
+" noremap l u
 
 " Insert Key
-noremap k i
-noremap K I
+"noremap k i
+"noremap K I
 
 " make Y to copy till the end of the line
 nnoremap Y y$
@@ -235,14 +235,14 @@ noremap <c-d> :tab sp<CR>:term python3 -m pudb %<CR>
 " < n   i >
 "     e
 "     v
-noremap <silent> u k
-noremap <silent> n h
-noremap <silent> e j
-noremap <silent> i l
+"noremap <silent> u k
+"noremap <silent> n h
+"noremap <silent> e j
+"noremap <silent> i l
 
 " U/E keys for 5 times u/e (faster navigation)
-noremap <silent> U 5k
-noremap <silent> E 5j
+noremap <silent> K 5k
+noremap <silent> J 5j
 
 " N key: go to the start of the line
 noremap <silent> N 0
@@ -254,7 +254,7 @@ noremap W 5w
 noremap B 5b
 
 " set h (same as n, cursor left) to 'end of word'
-noremap h e
+"noremap h e
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
 noremap <C-U> 5<C-y>
@@ -285,19 +285,19 @@ cnoremap <M-w> <S-Right>
 " ===
 " Use <space> + new arrow keys for moving the cursor around windows
 noremap <LEADER>w <C-w>w
-noremap <LEADER>u <C-w>k
-noremap <LEADER>e <C-w>j
-noremap <LEADER>n <C-w>h
-noremap <LEADER>i <C-w>l
+noremap <LEADER>k <C-w>k
+noremap <LEADER>j <C-w>j
+noremap <LEADER>h <C-w>h
+noremap <LEADER>l <C-w>l
 
 " Disable the default s key
 noremap s <nop>
 
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-noremap se :set splitbelow<CR>:split<CR>
-noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-noremap si :set splitright<CR>:vsplit<CR>
+noremap sk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap sj :set splitbelow<CR>:split<CR>
+noremap sh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap sl :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
 noremap <up> :res +5<CR>
@@ -306,13 +306,13 @@ noremap <left> :vertical resize-5<CR>
 noremap <right> :vertical resize+5<CR>
 
 " Place the two screens up and down
-noremap sh <C-w>t<C-w>K
+" noremap sh <C-w>t<C-w>K
 " Place the two screens side by side
 noremap sv <C-w>t<C-w>H
 
 " Rotate screens
-noremap srh <C-w>b<C-w>K
-noremap srv <C-w>b<C-w>H
+"noremap srh <C-w>b<C-w>K
+"noremap srv <C-w>b<C-w>H
 
 " Press <SPACE> + q to close the window below the current window
 noremap <LEADER>q <C-w>j:q<CR>
@@ -322,10 +322,10 @@ noremap <LEADER>q <C-w>j:q<CR>
 " === Tab management
 " ===
 " Create a new tab with tu
-noremap tu :tabe<CR>
+noremap tk :tabe<CR>
 " Move around tabs with tn and ti
-noremap tn :-tabnext<CR>
-noremap ti :+tabnext<CR>
+noremap th :-tabnext<CR>
+noremap tl :+tabnext<CR>
 " Move the tabs with tmn and tmi
 noremap tmn :-tabmove<CR>
 noremap tmi :+tabmove<CR>
@@ -690,6 +690,17 @@ nmap ts <Plug>(coc-translator-p)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
+" Use D to show documentation in preview window
+nnoremap <silent> D :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 " ===
 " === MarkdownPreview
 " ===
@@ -727,6 +738,7 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 " ===
 " === FZF
 " ===
+set rtp+=~/.fzf
 set rtp+=/usr/local/opt/fzf
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 noremap <C-p> :FZF<CR>
@@ -825,7 +837,7 @@ let g:bookmark_location_list = 1
 " ===
 " === Undotree
 " ===
-noremap L :UndotreeToggle<CR>
+noremap U :UndotreeToggle<CR>
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
@@ -833,10 +845,10 @@ let g:undotree_WindowLayout = 2
 let g:undotree_DiffpanelHeight = 8
 let g:undotree_SplitWidth = 24
 function g:Undotree_CustomMap()
-	nmap <buffer> u <plug>UndotreeNextState
-	nmap <buffer> e <plug>UndotreePreviousState
-	nmap <buffer> U 5<plug>UndotreeNextState
-	nmap <buffer> E 5<plug>UndotreePreviousState
+	nmap <buffer> j <plug>UndotreeNextState
+	nmap <buffer> k <plug>UndotreePreviousState
+	nmap <buffer> J 5<plug>UndotreeNextState
+	nmap <buffer> K 5<plug>UndotreePreviousState
 endfunc
 
 

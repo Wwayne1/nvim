@@ -83,8 +83,8 @@
 	"explorer.file.column.git.showIgnored": true,
 	"explorer.keyMappingMode": "none",
 	"explorer.keyMappings": {
-		"u": "nodePrev",
-		"e": "nodeNext",
+		"k": "nodePrev",
+		"j": "nodeNext",
 		"h": "toggleSelection",
 		"<tab>": "actionMenu",
 		"n": "collapse",
@@ -103,7 +103,6 @@
 		"pp": "pasteFile",
 		"dD": "deleteForever",
 		"a": "addFile",
-		"k": "addFile",
 		"M": "addDirectory",
 		"cw": "rename",
 		".": "toggleHidden",
@@ -184,8 +183,11 @@
 			"rootPatterns": [".ccls", ".ccls-root", "compile_commands.json", ".git/", ".hg/"],
 			"initializationOptions": {
 				 "cache": {
-					 "directory": "/tmp/ccls"
-				 }
+					 "directory": ".ccls-cache"
+				 },
+				"client": {
+					"snippetSupport": true
+				}
 			 }
 		}
 	}
